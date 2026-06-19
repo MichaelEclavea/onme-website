@@ -204,6 +204,129 @@
       line-height: 1.65;
     }
 
+    /* ── DEMO ── */
+    .demo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .demo-frame {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      background: var(--gray-100);
+      width: 220px;
+      flex-shrink: 0;
+    }
+
+    .demo-image {
+      width: 100%;
+      display: block;
+    }
+
+    .demo-frame-label {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--white);
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(6px);
+      padding: 5px 12px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .demo-arrow {
+      font-size: 2rem;
+      color: var(--gray-200);
+      flex-shrink: 0;
+    }
+
+    .comparison-wrap {
+      position: relative;
+      width: 220px;
+      flex-shrink: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .comparison-wrap img {
+      width: 100%;
+      display: block;
+    }
+
+    .comparison-before {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .comparison-before img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+    }
+
+    .comparison-handle {
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 2px;
+      background: var(--white);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .comparison-handle::before,
+    .comparison-handle::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 36px;
+      background: var(--white);
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      top: 50%;
+      margin-top: -18px;
+    }
+
+    .comparison-handle::after {
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 18 9 12 15 6'/%3E%3Cpolyline points='9 18 15 12 9 6' transform='translate(6,0)'/%3E%3C/svg%3E") center/20px no-repeat;
+    }
+
+    .comparison-slider {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: ew-resize;
+      margin: 0;
+    }
+
+    .comparison-label {
+      position: absolute;
+      bottom: 12px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--white);
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(6px);
+      padding: 4px 10px;
+      border-radius: 100px;
+    }
+
+    .comparison-label.before { left: 12px; }
+    .comparison-label.after { right: 12px; }
+
     /* ── FEATURES ── */
     .features-bg {
       background: var(--black);
@@ -385,6 +508,31 @@
     </div>
   </section>
 
+  <!-- DEMO -->
+  <section class="section" id="demo" style="background: var(--gray-100);">
+    <div class="section-inner">
+      <p class="section-label">Live example</p>
+      <h2 class="section-title">Try it yourself —<br />drag to compare.</h2>
+      <div class="demo-row">
+        <div class="demo-frame">
+          <img src="assets/example-suite.png" alt="Clothing item selected online" class="demo-image" />
+          <div class="demo-frame-label">Selected clothing</div>
+        </div>
+        <div class="demo-arrow">→</div>
+        <div class="comparison-wrap" id="comparisonWrap">
+          <img src="assets/example-user-after.png" alt="After virtual try-on" />
+          <div class="comparison-before" id="comparisonBefore" style="clip-path: inset(0 50% 0 0);">
+            <img src="assets/example-user-before.png" alt="Before virtual try-on" />
+          </div>
+          <div class="comparison-handle" id="comparisonHandle" style="left: 50%;"></div>
+          <input type="range" min="0" max="100" value="50" class="comparison-slider" id="comparisonSlider" aria-label="Compare before and after virtual try-on" />
+          <span class="comparison-label before">Before</span>
+          <span class="comparison-label after">After</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FEATURES -->
   <section class="section features-bg" id="features">
     <div class="section-inner">
@@ -469,5 +617,16 @@
     <p class="footer-copy">&copy; 2026 OnMe. All rights reserved.</p>
   </footer>
 
+  <script>
+    const slider = document.getElementById('comparisonSlider');
+    const before = document.getElementById('comparisonBefore');
+    const handle = document.getElementById('comparisonHandle');
+
+    slider.addEventListener('input', () => {
+      const v = slider.value;
+      before.style.clipPath = `inset(0 ${100 - v}% 0 0)`;
+      handle.style.left = `${v}%`;
+    });
+  </script>
 </body>
 </html>
