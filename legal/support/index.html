@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — OnMe</title>
+  <meta name="description" content="Get help with OnMe — FAQs, troubleshooting, and how to contact us." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e8e8e8;
+      --gray-500: #6b6b6b;
+      --gray-700: #3a3a3a;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--black); line-height: 1.6; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .nav-logo { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.03em; color: var(--black); text-decoration: none; }
+    .nav-back { font-size: 0.85rem; color: var(--gray-500); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.15s; }
+    .nav-back:hover { color: var(--black); }
+
+    .page-wrap { max-width: 720px; margin: 0 auto; padding: 140px 24px 100px; }
+
+    .page-label { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 16px; }
+    .page-title { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 12px; }
+    .page-sub { font-size: 1.05rem; color: var(--gray-500); max-width: 540px; line-height: 1.7; margin-bottom: 56px; }
+
+    .contact-card {
+      background: var(--black); color: var(--white);
+      border-radius: 20px; padding: 40px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 24px; margin-bottom: 72px;
+    }
+    .contact-card-text h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
+    .contact-card-text p { font-size: 0.9rem; color: #888; line-height: 1.6; max-width: 360px; }
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--white); color: var(--black);
+      padding: 14px 28px; border-radius: 10px;
+      font-size: 0.9rem; font-weight: 600; text-decoration: none;
+      white-space: nowrap; transition: opacity 0.15s;
+    }
+    .contact-btn:hover { opacity: 0.88; }
+
+    .faq-section h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 32px; }
+
+    .faq-list { display: flex; flex-direction: column; gap: 2px; }
+    .faq-item {
+      background: var(--gray-100); border-radius: 12px; overflow: hidden;
+    }
+    .faq-item + .faq-item { margin-top: 2px; }
+
+    details summary {
+      padding: 20px 24px;
+      font-size: 0.95rem; font-weight: 600; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      list-style: none; user-select: none;
+    }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after {
+      content: '+'; font-size: 1.2rem; font-weight: 400; color: var(--gray-500);
+      flex-shrink: 0; margin-left: 16px; transition: transform 0.2s;
+    }
+    details[open] summary::after { transform: rotate(45deg); }
+
+    details .faq-answer {
+      padding: 0 24px 20px;
+      font-size: 0.9rem; color: var(--gray-500); line-height: 1.7;
+    }
+    details .faq-answer a { color: var(--black); }
+
+    footer {
+      border-top: 1px solid var(--gray-200); padding: 40px 48px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.03em; text-decoration: none; color: var(--black); }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-size: 0.85rem; color: var(--gray-500); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--black); }
+    .footer-copy { font-size: 0.82rem; color: var(--gray-500); width: 100%; }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      footer { padding: 32px 24px; }
+      .contact-card { padding: 32px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">OnMe</a>
+    <a href="/" class="nav-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Back to home
+    </a>
+  </nav>
+
+  <div class="page-wrap">
+    <p class="page-label">Support</p>
+    <h1 class="page-title">How can we help?</h1>
+    <p class="page-sub">Browse the FAQs below or reach out directly — we typically respond within one business day.</p>
+
+    <div class="contact-card">
+      <div class="contact-card-text">
+        <h2>Contact us</h2>
+        <p>Can't find what you're looking for? Send us an email and we'll get back to you quickly.</p>
+      </div>
+      <a href="mailto:support@onme.app" class="contact-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+        support@onme.app
+      </a>
+    </div>
+
+    <div class="faq-section">
+      <h2>Frequently asked questions</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <details>
+            <summary>How do I install OnMe?</summary>
+            <div class="faq-answer">
+              OnMe is available as a Chrome extension. Install it from the Chrome Web Store, then pin it to your toolbar for easy access. Press <strong>Cmd+Shift+Y</strong> (Mac) or <strong>Ctrl+Shift+Y</strong> (Windows) to open the side panel at any time.
+            </div>
+          </details>
+        </div>
+
+        <div class="faq-item">
+          <details>
+            <summary>How do I try on a piece of clothing?</summary>
+            <div class="faq-answer">
+              Browse to any online store or website that displays clothing images. Click on any clothing item to activate OnMe's selection overlay, then confirm your selection. The try-on result appears in the OnMe side panel within seconds.
+            </div>
+          </details>
+        </div>
+
+        <div class="faq-item">
+          <details>
+            <summary>What is a credit and how many do I get?</summary>
+            <div class="faq-answer">
+              Each virtual try-on generation uses one credit. New accounts start with 3 free credits. Paid plans provide monthly credit allowances: Starter (75), Creator (175), and Pro (400). Credits refresh each billing cycle.
+            </div>
+          </details>
+        </div>
+
+        <div class="faq-item">
+          <details>
+            <summary>Where is my photo stored?</summary>
+            <div class="faq-answer">
+              Your personal photo (the one you upload of yourself) is stored locally in Chrome's storage on your device only — it is never uploaded to our servers. AI-generated try-on images are stored in our secure cloud so you can access your library across sessions.
+            </div>
+          </details>
+        </div>
+
+        <div class="faq-item">
+          <details>
+            <summary>My try-on result doesn't look right. What can I do?</summary>
+            <div class="faq-answer">
+              Results depend on the quality of the clothing image and your photo. For best results: use a clear, well-lit photo of yourself against a plain background, and select clothing images that show the full garment without heavy styling or extreme angles. If a result uses a credit but fails to generate, contact us and we'll restore the credit.
+            </div>
+          </details>
+        </div>
+
+        <div class="faq-item">
+          <details>
+            <summary>Can I cancel my subscription?</summary>
+            <div class="faq-answer">
+              Yes. You can cancel anytime from the billing portal inside the OnMe extension (Account → Manage Subscription). Your plan remains active until the end of the current billing period, after which it reverts to the free tier. See our <a href="/legal/refund-policy">Refund Policy</a> for details.
+            </div>
+          </details>
+        </div>
+
+        <div class="faq-item">
+          <details>
+            <summary>How do I request a refund?</summary>
+            <div class="faq-answer">
+              Email <a href="mailto:support@onme.app">support@onme.app</a> with your account email and a brief description of the issue. First-time subscribers may request a full refund within 14 days of their initial purchase. See our <a href="/legal/refund-policy">Refund Policy</a> for full details.
+            </div>
+          </details>
+        </div>
+
+        <div class="faq-item">
+          <details>
+            <summary>Which browsers does OnMe support?</summary>
+            <div class="faq-answer">
+              OnMe is currently available as a Chrome extension (Manifest V3) and works on any Chromium-based browser that supports Chrome extensions. Support for other browsers may be added in the future.
+            </div>
+          </details>
+        </div>
+
+        <div class="faq-item">
+          <details>
+            <summary>Does OnMe work on all shopping websites?</summary>
+            <div class="faq-answer">
+              OnMe works on any website that displays clothing images — it is not limited to specific retailers or platforms. If you encounter a site where the selection overlay doesn't appear, please let us know at <a href="mailto:support@onme.app">support@onme.app</a>.
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="/" class="footer-logo">OnMe</a>
+    <ul class="footer-links">
+      <li><a href="/legal/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/legal/terms-of-service">Terms of Service</a></li>
+      <li><a href="/legal/refund-policy">Refund Policy</a></li>
+      <li><a href="/legal/support">Support</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 OnMe. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
