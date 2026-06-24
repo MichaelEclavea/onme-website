@@ -83,7 +83,7 @@
       <p>When you create an OnMe account, we collect your email address and, if you use Google or Apple sign-in, a token from those providers to authenticate you. This data is stored securely in our authentication system (Supabase).</p>
 
       <h3>Photos You Upload</h3>
-      <p>You may upload a personal photo ("user photo") to enable virtual try-on. <strong>User photos are stored locally on your device</strong> in Chrome's local storage and are never uploaded to our servers. They are used only to generate try-on previews.</p>
+      <p>You may upload a personal photo ("user photo") to enable virtual try-on. User photos are sent securely to our AI processing pipeline solely to generate your try-on preview. They are not stored on our servers beyond the duration of your active session and are not used for any other purpose.</p>
 
       <h3>Generated Images</h3>
       <p>When you perform a try-on, the clothing image and your user photo are sent securely to our AI processing pipeline. The AI-generated result is stored in our cloud storage (Cloudflare R2) and linked to your account so you can access your try-on library. Clothing images you select come from the websites you are browsing and are not stored permanently.</p>
@@ -115,7 +115,7 @@
       <p>We do not sell, rent, or trade your personal information.</p>
 
       <h2>4. Data Retention</h2>
-      <p>Your generated try-on images are retained in your library until you delete them or close your account. User photos stored locally are removed when you clear Chrome's local storage or uninstall the extension. Account data is deleted within 30 days of account closure.</p>
+      <p>Your generated try-on images are retained in your library until you delete them or close your account. User photos are not stored — they are discarded immediately after your try-on preview is generated. Account data is deleted within 30 days of account closure.</p>
 
       <h2>5. Security</h2>
       <p>We use industry-standard security practices including encrypted connections (HTTPS/TLS), JWT-based authentication, and restricted access to production systems. No method of transmission over the internet is 100% secure; we cannot guarantee absolute security.</p>
